@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     ui.renderAll();
+    
 })
 
 class UI {
@@ -51,6 +52,8 @@ class UI {
         await services.saveData(data);
         this.clearForm();
         this.renderAll();
+        this.renderMessage('Added','info',3000)
+        
     }
 
     clearForm() {
@@ -60,9 +63,28 @@ class UI {
     async delete(id) {
         if (confirm('¿Esta seguro que quiere eliminar este registro : ?')) {
             await services.delete(id);
+            this.renderMessage('Deleted','danger',3000)
             this.renderAll();
         }
 
+
+    }
+    renderMessage(message, colorMessage, secondTime) {
+        const div = document.createElement('div');
+        // div.style.margin('10px')
+        div.className = `text-center text-uppercase alert alert-${colorMessage} message`;
+        
+        div.appendChild(document.createTextNode(message));
+
+        const container = document.querySelector('.col-md-4');
+        const form = document.querySelector('#formulario');
+
+        container.insertBefore(div,form);
+
+        setTimeout(() => {
+            document.querySelector('.message').remove();
+        }, secondTime);
+       
     }
 }
 

@@ -32,9 +32,7 @@ document.querySelector('#registros').addEventListener('click',e=>{
         const id = e.target.getAttribute('_id');
         const ui = new UI();
         ui.delete(id);
-
-        
-        
+     
     }
 
     e.preventDefault();
