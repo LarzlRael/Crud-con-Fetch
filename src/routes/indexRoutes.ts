@@ -9,7 +9,7 @@ router.post('/',[
     check('dir').not().isEmpty(),
     check('n_trabs').isNumeric().not().isEmpty(),
     check('n_pac').isNumeric().not().isEmpty(),
-    check('especialidad').isAlphanumeric().not().isEmpty()
+    check('especialidad').isAlpha().not().isEmpty()
     
 ],indexController.create);
 

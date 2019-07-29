@@ -2,6 +2,7 @@ import express from 'express';
 import indexRoutes from './routes/indexRoutes';
 import morgan from 'morgan';
 import cors from 'cors';
+import path from "path";
 // importando la base de datos
 import './database'
 
@@ -25,6 +26,7 @@ class Server{
     }
     routes(){
         this.app.use(indexRoutes);
+        this.app.use(express.static(path.join(__dirname,'public')));
     }
 
     start(){

@@ -6,7 +6,7 @@ export interface HospitalInterface extends mongoose.Document {
     especialidad: { type: String },
     n_trabs: { type: Number },
     n_pac: { type: Number },
-    
+    create_at: { type: Date }
 }
 
 const hospitalSchema = new Schema({
@@ -15,6 +15,8 @@ const hospitalSchema = new Schema({
     especialidad: { type: String, required: true },
     n_trabs: { type: Number, required: true },
     n_pac: { type: Number, required: true },
+    create_at: { type: Date, default: Date.now }
+
 });
 
 export default model<HospitalInterface>('hospital', hospitalSchema);

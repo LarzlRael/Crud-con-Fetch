@@ -16,7 +16,7 @@ const express_validator_1 = require("express-validator");
 class IndexController {
     index(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const allData = yield hospitalModel_1.default.find();
+            const allData = yield hospitalModel_1.default.find().sort({ _id: -1 });
             res.json(allData);
         });
     }
@@ -35,8 +35,7 @@ class IndexController {
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            console.log('estes es el id recibido : ' + id);
-            const bookDelete = yield hospitalModel_1.default.findByIdAndDelete(id);
+            yield hospitalModel_1.default.findByIdAndDelete(id);
             res.json({ message: 'Eliminado' });
         });
     }

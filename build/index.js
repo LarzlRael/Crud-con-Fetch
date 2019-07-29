@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
+const path_1 = __importDefault(require("path"));
 require("./database");
 class Server {
     constructor() {
@@ -25,6 +26,7 @@ class Server {
     }
     routes() {
         this.app.use(indexRoutes_1.default);
+        this.app.use(express_1.default.static(path_1.default.join(__dirname, 'public')));
     }
     start() {
         this.app.listen(this.app.get('port'), () => {
